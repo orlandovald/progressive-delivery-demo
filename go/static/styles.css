@@ -1,0 +1,39 @@
+h1 {
+    text-align: center;
+    color: #4d2118;
+}
+
+.square {
+    /* width: 100px;
+    height: 100px;*/
+    width: 80%;
+    height: 80%;
+    background: transparent;
+    padding: 0.5rem 0.5rem;
+    margin: 0 0.5rem;
+    font-size: 1rem;
+    border: solid 3px #41403E;
+    border-top-left-radius: 255px 15px;
+    border-top-right-radius: 15px 225px;
+    border-bottom-right-radius: 225px 15px;
+    border-bottom-left-radius: 15px 255px;
+}
+
+.square:hover {
+    box-shadow: 2px 8px 4px -6px hsla(0, 0%, 0%, .3);
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    grid-auto-rows: 100px;
+    grid-auto-columns: 50px;
+    gap: 10px;
+    padding: 10px;
+}
+
+.grid-container>div {
+    text-align: center;
+    padding: 20px 0;
+    font-size: 30px;
+}

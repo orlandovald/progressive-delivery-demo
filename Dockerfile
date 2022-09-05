@@ -11,6 +11,7 @@ RUN go build -v
 
 FROM alpine:3.16
 COPY --from=builder /usr/src/app/rollout-demo /usr/local/bin/rollout-demo
+COPY go/static /usr/local/bin/static
 
 EXPOSE 8080
 
