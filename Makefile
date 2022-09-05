@@ -33,9 +33,13 @@ install-kiali: install-istio
 .PHONY: build-images
 build-images:
 	docker build . -t rollout-demo:v1
-	docker build . --build-arg error_rate=50 -t rollout-demo:v2
-	docker build . --build-arg error_rate=2 -t rollout-demo:v3
+	docker build . --build-arg error_chance=50 -t rollout-demo:v2
+	docker build . --build-arg error_chance=2 -t rollout-demo:v3
 
 .PHONY: load-images
 load-images:
 	kind load docker-image rollout-demo:v1 rollout-demo:v2 rollout-demo:v3 --name argo-rollouts-demo
+
+.PHONY: watch
+watch:
+	@kubectl argo rollouts get rollout rollout-demo -w

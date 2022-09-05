@@ -14,7 +14,7 @@ COPY --from=builder /usr/src/app/rollout-demo /usr/local/bin/rollout-demo
 
 EXPOSE 8080
 
-ARG error_rate=0
-ENV ERROR_RATE=${error_rate}
+ARG error_chance=0
+ENV ERROR_CHANCE=${error_chance}
 
 CMD ["rollout-demo"]

@@ -25,10 +25,14 @@ spec:
             - primary
       steps:
       - setWeight: 25
-      - pause: {duration: 2m}
+      - pause: {duration: 1m}
       - setWeight: 50
       - pause: {duration: 2m}
       - setWeight: 75
+      analysis:
+        templates:
+        - templateName: success-rate
+        startingStep: 2
   template:
     metadata:
       annotations: {}

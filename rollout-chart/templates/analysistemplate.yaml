@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AnalysisTemplate
+metadata:
+  name: success-rate
+spec:
+  metrics:
+  - name: success-rate
+    interval: 30s
+    successCondition: result[0] >= 0.95
+    failureLimit: 2
+    provider:
+      prometheus:
+        address: http://prometheus-server.prometheus.svc.cluster.local:80
+        query: |
+          sum(irate(
+            istio_requests_total{destination_service_name="canary-svc", reporter="destination",response_code!~"5.*"}[2m]
+          )) / 
+          sum(irate(
+            istio_requests_total{destination_service_name="canary-svc", reporter="destination"}[2m]
+          ))
