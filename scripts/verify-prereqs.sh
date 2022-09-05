@@ -2,6 +2,7 @@
 
 RED='\033[0;31m'
 GREEN='\033[0;32m'
+CYAN='\033[0;36m'
 NC='\033[0m'
 
 notFoundReq=()
@@ -9,12 +10,12 @@ notFoundOpt=()
 deps=()
 
 deps+=("docker;docker -v;Docker;1")
-deps+=("go;go version;Golang;1")
 deps+=("kubectl;kubectl version --short --client=true;Kubectl;1")
 deps+=("kind;kind --version=true;Kind;1")
 deps+=("helm;helm version;Helm;1")
 deps+=("kubectl-argo-rollouts;kubectl-argo-rollouts version --short;Argo Rollouts Kubectl plugin;0")
-deps+=("npm;npm -v;npm;0")
+
+echo -e "${CYAN}Verifying dependencies...${NC}"
 
 for dep in "${deps[@]}"
 do

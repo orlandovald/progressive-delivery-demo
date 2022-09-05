@@ -1,0 +1,21 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: istio-rollout-gateway
+  namespace: {{ .Values.namespace }}
+spec:
+  selector:
+    istio: ingress
+  servers:
+  - port:
+      number: 80
+      name: http-demo
+      protocol: HTTP
+    hosts:
+    - "demo.local"
+  - port:
+      number: 80
+      name: http-kiali
+      protocol: HTTP
+    hosts:
+    - "127.0.0.1"
