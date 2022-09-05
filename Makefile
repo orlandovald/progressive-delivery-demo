@@ -43,3 +43,12 @@ load-images:
 .PHONY: watch
 watch:
 	@kubectl argo rollouts get rollout rollout-demo -w
+
+VERSION = v1
+.PHONY: helm-upgrade
+helm-upgrade:
+	helm upgrade -i --set image.tag=$(VERSION) -n rollout-demo  argo-rollout ./rollout-chart
+
+.PHONY: helm-uninstall
+helm-uninstall:
+	helm uninstall -n rollout-demo  argo-rollout
