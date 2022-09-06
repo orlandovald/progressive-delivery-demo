@@ -6,7 +6,7 @@ metadata:
 spec:
   metrics:
   - name: success-rate
-    interval: 30s
+    interval: 20s
     successCondition: len(result) == 0 || result[0] >= 0.95
     failureLimit: 2
     provider:
