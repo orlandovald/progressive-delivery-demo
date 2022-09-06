@@ -44,6 +44,7 @@ load-images:
 watch:
 	@kubectl argo rollouts get rollout rollout-demo -w
 
+# Default tag if none is specified
 VERSION = green
 .PHONY: helm-upgrade
 helm-upgrade:
