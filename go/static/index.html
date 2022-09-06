@@ -73,6 +73,18 @@
     <div hx-get="hit" hx-trigger="every 2s">
       <div class="square" style="background-color: gray">&nbsp;</div>
     </div>
+    <div hx-get="hit" hx-trigger="every 3s">
+      <div class="square" style="background-color: gray">&nbsp;</div>
+    </div>
+    <div hx-get="hit" hx-trigger="every 1s">
+      <div class="square" style="background-color: gray">&nbsp;</div>
+    </div>
+    <div hx-get="hit" hx-trigger="every 3s">
+      <div class="square" style="background-color: gray">&nbsp;</div>
+    </div>
+    <div hx-get="hit" hx-trigger="every 2s">
+      <div class="square" style="background-color: gray">&nbsp;</div>
+    </div>
   </div> <!-- grid-container -->
 </body>
 
@@ -80,9 +92,10 @@
   // We still want to swap elements on error
   document.body.addEventListener('htmx:beforeOnLoad', function (evt) {
     if (evt.detail.xhr.status === 500) {
-        evt.detail.shouldSwap = true;
-        evt.detail.isError = false;
+      evt.detail.shouldSwap = true;
+      evt.detail.isError = false;
     }
-});
+  });
 </script>
+
 </html>
