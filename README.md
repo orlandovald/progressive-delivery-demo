@@ -73,3 +73,23 @@ $ make watch
 $ make helm-uninstall # removes the rollout in case you want to deploy from scracth
 $ make delete-cluster # deletes the cluster creating during cluster-up
 ```
+
+## Open Kiali
+
+Run the below command, this will block the shell.
+
+```shell
+$ kubectl port-forward svc/kiali 20001:20001 -n istio-system
+```
+
+Now you can open Kiali in your browser at http://localhost:20001/
+
+## Open Prometheus
+
+Run the below command, this will block the shell.
+
+```shell
+$ kubectl port-forward service/prometheus-server 9090:80 -n prometheus
+```
+
+Now you can open Prometheus in your browser at http://localhost:9090/
