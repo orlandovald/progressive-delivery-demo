@@ -4,19 +4,35 @@ h1 {
 }
 
 .square {
-    /* width: 100px;
-    height: 100px;*/
     width: 80%;
     height: 80%;
     background: transparent;
     padding: 0.5rem 0.5rem;
     margin: 0 0.5rem;
-    font-size: 1rem;
-    border: solid 3px #41403E;
+    
     border-top-left-radius: 255px 15px;
     border-top-right-radius: 15px 225px;
     border-bottom-right-radius: 225px 15px;
     border-bottom-left-radius: 15px 255px;
+}
+
+div.lined.ok {
+    border: solid 3px #41403E;
+    color: white;
+}
+
+div.lined.error {
+    color: #ff0000;
+    border: dashed 5px #ff0000;
+}
+
+div.square {
+    text-transform: capitalize;
+    font-size:2vw;
+    text-shadow: -1px 1px 0 #000,
+        1px 1px 0 #000,
+        1px -1px 0 #000,
+        -1px -1px 0 #000;
 }
 
 .square:hover {

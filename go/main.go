@@ -46,13 +46,13 @@ func main() {
 }
 
 func hit(w http.ResponseWriter, r *http.Request) {
-	respColor := color
+	lineType := "ok"
 	status := http.StatusOK
 	if shouldError() {
 		status = http.StatusInternalServerError
-		respColor = "red"
+		lineType = "error"
 	}
-	resp := fmt.Sprintf("<div class='square lined thick' style='background-color: %s'>%s</div>", respColor, respColor)
+	resp := fmt.Sprintf("<div class='square lined %s' style='background-color: %s'>%s</div>", lineType, color, color)
 	fmt.Println(resp)
 	w.WriteHeader(status)
 	fmt.Fprint(w, resp)
