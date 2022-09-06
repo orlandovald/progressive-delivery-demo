@@ -42,7 +42,7 @@ load-images:
 
 .PHONY: watch
 watch:
-	@kubectl argo rollouts get rollout rollout-demo -w
+	kubectl argo rollouts get rollout rollout-demo -w -n rollout-demo
 
 # Default tag if none is specified
 VERSION = green
