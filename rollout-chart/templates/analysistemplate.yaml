@@ -14,8 +14,8 @@ spec:
         address: http://prometheus-server.prometheus.svc.cluster.local:80
         query: |
           sum(irate(
-            istio_requests_total{destination_service_name="canary-svc", reporter="destination",response_code!~"5.*"}[2m]
+            istio_requests_total{destination_workload=~"rollout-demo-.+", reporter="destination",response_code!~"5.*"}[2m]
           )) / 
           sum(irate(
-            istio_requests_total{destination_service_name="canary-svc", reporter="destination"}[2m]
+            istio_requests_total{destination_workload=~"rollout-demo-.+", reporter="destination"}[2m]
           ))
