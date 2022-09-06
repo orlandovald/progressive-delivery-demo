@@ -40,7 +40,7 @@ func main() {
 	handler := http.NewServeMux()
 	handler.HandleFunc("/hit", hit)
 	handler.HandleFunc("/healthz", health)
-	handler.Handle("/", http.FileServer(http.Dir("static")))
+	handler.Handle("/", http.FileServer(http.Dir("./static")))
 	fmt.Printf("Server listening in port %s\n", port)
 	http.ListenAndServe(fmt.Sprintf("0.0.0.0:%s", port), handler)
 }
@@ -52,7 +52,7 @@ func hit(w http.ResponseWriter, r *http.Request) {
 		status = http.StatusInternalServerError
 		respColor = "red"
 	}
-	resp := fmt.Sprintf("<div class='square lined thick' style='background-color: %s'>&nbsp;</div>", respColor)
+	resp := fmt.Sprintf("<div class='square lined thick' style='background-color: %s'>%s</div>", respColor, respColor)
 	fmt.Println(resp)
 	w.WriteHeader(status)
 	fmt.Fprint(w, resp)

@@ -9,13 +9,7 @@ spec:
   servers:
   - port:
       number: 80
-      name: http-demo
+      name: http
       protocol: HTTP
     hosts:
-    - "demo.local"
-  - port:
-      number: 80
-      name: http-kiali
-      protocol: HTTP
-    hosts:
-    - "127.0.0.1"
+    - "*"

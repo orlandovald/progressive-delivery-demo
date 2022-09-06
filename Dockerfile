@@ -10,12 +10,13 @@ COPY ./go/ .
 RUN go build -v
 
 FROM alpine:3.16
-COPY --from=builder /usr/src/app/rollout-demo /usr/local/bin/rollout-demo
-COPY go/static /usr/local/bin/static
+COPY --from=builder /usr/src/app/rollout-demo /app/rollout-demo
+COPY go/static /app/static
 
 EXPOSE 8080
 
 ARG error_chance=0
 ENV ERROR_CHANCE=${error_chance}
 
-CMD ["rollout-demo"]
+WORKDIR /app
+CMD ["./rollout-demo"]

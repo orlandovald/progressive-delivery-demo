@@ -2,6 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: AnalysisTemplate
 metadata:
   name: success-rate
+  namespace: {{ .Values.namespace }}
 spec:
   metrics:
   - name: success-rate
