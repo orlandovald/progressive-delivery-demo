@@ -54,9 +54,18 @@ func hit(w http.ResponseWriter, r *http.Request) {
 	}
 
 	resp := fmt.Sprintf("<div class='square lined %s' style='background-color: %s'>&nbsp;</div>", lineType, color)
+
+	// some random delay
+	sleep()
+
 	fmt.Println(resp)
 	w.WriteHeader(status)
 	fmt.Fprint(w, resp)
+}
+
+func sleep() {
+	rand.Seed(time.Now().UnixNano())
+	time.Sleep(time.Duration(rand.Intn(300)) * time.Millisecond)
 }
 
 func health(w http.ResponseWriter, r *http.Request) {
