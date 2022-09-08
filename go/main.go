@@ -52,7 +52,8 @@ func hit(w http.ResponseWriter, r *http.Request) {
 		status = http.StatusInternalServerError
 		lineType = "error"
 	}
-	resp := fmt.Sprintf("<div class='square lined %s' style='background-color: %s'>%s</div>", lineType, color, color)
+
+	resp := fmt.Sprintf("<div class='square lined %s' style='background-color: %s'>&nbsp;</div>", lineType, color)
 	fmt.Println(resp)
 	w.WriteHeader(status)
 	fmt.Fprint(w, resp)

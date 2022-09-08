@@ -53,3 +53,11 @@ helm-upgrade:
 .PHONY: helm-uninstall
 helm-uninstall:
 	helm uninstall -n rollout-demo  argo-rollout
+
+.PHONY: step
+step:
+	kubectl argo rollouts promote rollout-demo -n rollout-demo
+
+.PHONY: promote
+promote:
+	kubectl argo rollouts promote --full rollout-demo -n rollout-demo
