@@ -34,7 +34,7 @@ install-kiali: install-istio
 build-images:
 	docker build . -t rollout-demo:green
 	docker build . -t rollout-demo:blue
-	docker build . --build-arg error_chance=70 -t rollout-demo:yellow
+	docker build . --build-arg error_chance=85 -t rollout-demo:yellow
 	docker build . -t rollout-demo:brown
 
 .PHONY: load-images
