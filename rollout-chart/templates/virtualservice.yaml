@@ -14,10 +14,10 @@ spec:
     - destination:
         host: stable-svc
         port:
-          number: 80
+          number: 8080
       weight: 100
     - destination:
         host: canary-svc
         port:
-          number: 80
+          number: 8080
       weight: 0
