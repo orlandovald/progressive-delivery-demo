@@ -31,12 +31,8 @@ func main() {
 	}
 
 	fmt.Printf("Starting with configuration: colorEnvVar = %s | errorChance = %d\n", color, errorChance)
-
-	var v [5]int
 	rand.Seed(time.Now().UnixNano())
-	for i := 0; i < 5; i++ {
-		v[i] = rand.Intn(100)
-	}
+
 	handler := http.NewServeMux()
 	handler.HandleFunc("/hit", hit)
 	handler.HandleFunc("/healthz", health)
@@ -64,7 +60,6 @@ func hit(w http.ResponseWriter, r *http.Request) {
 }
 
 func sleep() {
-	rand.Seed(time.Now().UnixNano())
 	time.Sleep(time.Duration(rand.Intn(300)) * time.Millisecond)
 }
 
@@ -74,8 +69,8 @@ func health(w http.ResponseWriter, r *http.Request) {
 }
 
 func shouldError() bool {
-	rand.Seed(time.Now().UnixNano())
-	if errorChance >= rand.Intn(100)+1 {
+	r := rand.Intn(100) + 1
+	if errorChance >= r {
 		return true
 	}
 	return false
