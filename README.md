@@ -51,7 +51,7 @@ $ make helm-upgrade
 ```
 
 ### 5. Open the demo app
-Open http://localhost/ in your browser to see the demo app. All squares should report back as `green`
+Open http://localhost:8080/ in your browser to see the demo app. All squares should report back as `green`
 
 ### 6. Deploy a canary version
 
@@ -76,7 +76,7 @@ $ make delete-cluster # deletes the cluster creating during cluster-up
 
 ## Open Kiali
 
-Run the below command, this will block the shell.
+If you want to open the Kiali Web App run the below command (this will block the shell),
 
 ```shell
 $ kubectl port-forward svc/kiali 20001:20001 -n istio-system
@@ -86,7 +86,7 @@ Now you can open Kiali in your browser at http://localhost:20001/
 
 ## Open Prometheus
 
-Run the below command, this will block the shell.
+If you want to access the Prometheus UI run the below command (this will block the shell),
 
 ```shell
 $ kubectl port-forward service/prometheus-server 9090:80 -n prometheus
