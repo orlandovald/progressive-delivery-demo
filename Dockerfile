@@ -1,22 +1,19 @@
 FROM golang:1.18-alpine as builder
-
 WORKDIR /usr/src/app
 
-# pre-copy/cache go.mod for pre-downloading dependencies and only redownloading them in subsequent builds if they change
 COPY ./go/go.mod ./
 RUN go mod download && go mod verify
 
 COPY ./go/ .
-RUN go build -v
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags="-w -s"
 
-FROM alpine:3.16
-COPY --from=builder /usr/src/app/rollout-demo /app/rollout-demo
-COPY go/static /app/static
+FROM scratch
+COPY --from=builder --chmod=777 /usr/src/app/rollout-demo /rollout-demo
+COPY go/static /static
 
 EXPOSE 8080
 
 ARG error_chance=0
 ENV ERROR_CHANCE=${error_chance}
-
-WORKDIR /app
-CMD ["./rollout-demo"]
+ 
+CMD ["/rollout-demo"]

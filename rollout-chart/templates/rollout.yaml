@@ -53,11 +53,11 @@ spec:
             value: {{ .Values.image.tag }}
         resources:
           requests:
-            memory: 32Mi
-            cpu: 5m
-          limits:
             memory: 64Mi
-            cpu: 10m
+            cpu: 20m
+          limits:
+            memory: 128Mi
+            cpu: 40m
         readinessProbe:
           initialDelaySeconds: 2
           httpGet:
