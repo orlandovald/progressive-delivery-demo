@@ -7,7 +7,7 @@ spec:
   metrics:
   - name: error-rate
     interval: 20s
-    failureCondition: result[0] >= 5
+    failureCondition: len(result) > 0 && result[0] >= 5
     failureLimit: 2
     provider:
       prometheus:

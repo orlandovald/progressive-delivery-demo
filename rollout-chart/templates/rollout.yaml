@@ -6,8 +6,9 @@ metadata:
   labels:
     app: {{ .Values.name }}
     release: {{ .Release.Name }}
+    version: {{ .Values.image.tag }}
 spec:
-  replicas: {{ .Values.replicaCount | default 8 }}
+  replicas: {{ .Values.replicaCount | default 10 }}
   revisionHistoryLimit: 3
   selector:
     matchLabels:
@@ -37,12 +38,14 @@ spec:
         - templateName: error-rate
         startingStep: 2
       abortScaleDownDelaySeconds: 10
+      scaleDownDelaySeconds: 10
   template:
     metadata:
       annotations: {}
       labels:
         app: {{ .Values.name }}
         release: {{ .Release.Name }}
+        version: {{ .Values.image.tag }}
     spec:
       containers:
       - name: {{ .Values.name }}
