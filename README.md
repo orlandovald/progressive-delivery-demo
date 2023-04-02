@@ -55,7 +55,7 @@ Open http://localhost:8080/ in your browser to see the demo app. All squares sho
 
 ### 6. Deploy a canary version
 
-You can use the below command to deploy a canary version. Valid `VERSION` values are `green`, `blue`, `yellow` and `brown`. Version `yellow` simulates a 50% error rate which would fail the error-rate analysis.
+You can use the below command to deploy a canary version. Valid `VERSION` values are `green`, `blue`, `yellow` and `pruple`. Version `yellow` simulates a 50% error rate which would fail the error-rate analysis.
 
 ```shell
 $ make helm-upgrade VERSION=blue

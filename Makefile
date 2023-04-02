@@ -35,11 +35,11 @@ build-images:
 	docker build . -t rollout-demo:green
 	docker build . -t rollout-demo:blue
 	docker build . --build-arg error_chance=50 -t rollout-demo:yellow
-	docker build . -t rollout-demo:brown
+	docker build . -t rollout-demo:purple
 
 .PHONY: load-images
 load-images:
-	kind load docker-image rollout-demo:green rollout-demo:blue rollout-demo:yellow rollout-demo:brown --name argo-rollouts-demo
+	kind load docker-image rollout-demo:green rollout-demo:blue rollout-demo:yellow rollout-demo:pruple --name argo-rollouts-demo
 
 .PHONY: watch
 watch:
