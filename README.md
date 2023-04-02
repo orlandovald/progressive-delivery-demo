@@ -30,7 +30,7 @@ $ make cluster-up
 ```
 
 ### 3. Build sample service images
-This command will create blue/green/yellow images of our test service
+This command will create a few image tags for our test service
 
 ```shell
 $ make build-images
@@ -55,7 +55,7 @@ Open http://localhost:8080/ in your browser to see the demo app. All squares sho
 
 ### 6. Deploy a canary version
 
-You can use the below command to deploy a canary version. Valid `VERSION` values are `green`, `blue` and `yellow`. The `blue` version will fail the analysis as it simulates a 60% of requests returning an error so you can see the automatic rollback of the version.
+You can use the below command to deploy a canary version. Valid `VERSION` values are `green`, `blue`, `yellow` and `brown`. Version `yellow` simulates a 50% error rate which would fail the error-rate analysis.
 
 ```shell
 $ make helm-upgrade VERSION=blue
