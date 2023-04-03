@@ -30,7 +30,7 @@ $ make cluster-up
 ```
 
 ### 3. Build sample service images
-This command will create blue/green/yellow images of our test service
+This command will create a few image tags for our test service
 
 ```shell
 $ make build-images
@@ -51,11 +51,11 @@ $ make helm-upgrade
 ```
 
 ### 5. Open the demo app
-Open http://localhost/ in your browser to see the demo app. All squares should report back as `green`
+Open http://localhost:8080/ in your browser to see the demo app. All squares should report back as `green`
 
 ### 6. Deploy a canary version
 
-You can use the below command to deploy a canary version. Valid `VERSION` values are `green`, `blue` and `yellow`. The `blue` version will fail the analysis as it simulates a 60% of requests returning an error so you can see the automatic rollback of the version.
+You can use the below command to deploy a canary version. Valid `VERSION` values are `green`, `blue`, `yellow` and `pruple`. Version `yellow` simulates a 50% error rate which would fail the error-rate analysis.
 
 ```shell
 $ make helm-upgrade VERSION=blue
@@ -76,7 +76,7 @@ $ make delete-cluster # deletes the cluster creating during cluster-up
 
 ## Open Kiali
 
-Run the below command, this will block the shell.
+If you want to open the Kiali Web App run the below command (this will block the shell),
 
 ```shell
 $ kubectl port-forward svc/kiali 20001:20001 -n istio-system
@@ -86,7 +86,7 @@ Now you can open Kiali in your browser at http://localhost:20001/
 
 ## Open Prometheus
 
-Run the below command, this will block the shell.
+If you want to access the Prometheus UI run the below command (this will block the shell),
 
 ```shell
 $ kubectl port-forward service/prometheus-server 9090:80 -n prometheus

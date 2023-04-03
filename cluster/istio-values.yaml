@@ -3,6 +3,6 @@ service:
   ports:
   - name: http2
     nodePort: 32000
-    port: 80
+    port: 8080
     protocol: TCP
     targetPort: 8080

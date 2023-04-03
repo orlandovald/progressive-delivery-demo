@@ -6,8 +6,9 @@ metadata:
   labels:
     app: {{ .Values.name }}
     release: {{ .Release.Name }}
+    version: {{ .Values.image.tag }}
 spec:
-  replicas: {{ .Values.replicaCount | default 2 }}
+  replicas: {{ .Values.replicaCount | default 10 }}
   revisionHistoryLimit: 3
   selector:
     matchLabels:
@@ -24,22 +25,27 @@ spec:
             routes:
             - primary
       steps:
-      - setWeight: 25
-      - pause: {duration: 1m}
-      - setWeight: 50
-      - pause: {duration: 2m}
-      - setWeight: 75
-      - pause: {duration: 1m}
+      - setWeight: 20
+      - pause: {duration: 30s}
+      - setWeight: 40
+      - pause: {duration: 30s}
+      - setWeight: 60
+      - pause: {duration: 30s}
+      - setWeight: 80
+      - pause: {duration: 30s}
       analysis:
         templates:
-        - templateName: success-rate
-        startingStep: 1
+        - templateName: error-rate
+        startingStep: 2
+      abortScaleDownDelaySeconds: 10
+      scaleDownDelaySeconds: 10
   template:
     metadata:
       annotations: {}
       labels:
         app: {{ .Values.name }}
         release: {{ .Release.Name }}
+        version: {{ .Values.image.tag }}
     spec:
       containers:
       - name: {{ .Values.name }}
@@ -53,11 +59,11 @@ spec:
             value: {{ .Values.image.tag }}
         resources:
           requests:
-            memory: 32Mi
-            cpu: 5m
-          limits:
             memory: 64Mi
-            cpu: 10m
+            cpu: 20m
+          limits:
+            memory: 128Mi
+            cpu: 40m
         readinessProbe:
           initialDelaySeconds: 2
           httpGet:
