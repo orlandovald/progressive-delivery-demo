@@ -39,7 +39,7 @@ build-images:
 
 .PHONY: load-images
 load-images:
-	kind load docker-image rollout-demo:green rollout-demo:blue rollout-demo:yellow rollout-demo:pruple --name argo-rollouts-demo
+	kind load docker-image rollout-demo:green rollout-demo:blue rollout-demo:yellow rollout-demo:purple --name argo-rollouts-demo
 
 .PHONY: watch
 watch:

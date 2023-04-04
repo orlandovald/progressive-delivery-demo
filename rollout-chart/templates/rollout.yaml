@@ -8,7 +8,7 @@ metadata:
     release: {{ .Release.Name }}
     version: {{ .Values.image.tag }}
 spec:
-  replicas: {{ .Values.replicaCount | default 10 }}
+  replicas: {{ .Values.replicaCount | default 6 }}
   revisionHistoryLimit: 3
   selector:
     matchLabels:
@@ -37,8 +37,6 @@ spec:
         templates:
         - templateName: error-rate
         startingStep: 2
-      abortScaleDownDelaySeconds: 10
-      scaleDownDelaySeconds: 10
   template:
     metadata:
       annotations: {}
